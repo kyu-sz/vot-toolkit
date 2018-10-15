@@ -68,7 +68,11 @@ for i = 1:r
     data.initialized = false;
     data.properties = properties_create(sequence);
 
+    print_text('Run tracker...');
+
     data = tracker_run(tracker, @callback, data);
+
+    print_text('Retrieved data from tracker!');
 
     times(:, i) = data.timing;
     write_trajectory(result_file, data.result);

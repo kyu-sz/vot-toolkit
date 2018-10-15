@@ -74,10 +74,12 @@ mexargs = [mexargs, 'Log', log_file];
 failure = [];
 
 try
+    print_text(['Contacting tracker through ', connection, ' connection...']);
     data = traxclient(tracker.command, callback, ...
         'Directory', directory, 'Timeout', timeout, ...
         'Environment', environment, 'Connection', connection, ...
         'Data', data, mexargs{:});
+    print_text('Received data!');
 catch e
     print_text('Tracker execution interrupted: %s', e.message);
     failure = e;
